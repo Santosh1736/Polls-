@@ -1,14 +1,16 @@
 {% extends 'polls/layout.html' %}
 
 {% block content %}<!-- default content text (typically empty) -->
+<div style="margin-top:200px;" align="center">
             {% if latest_question_list %}
-              <ul>
+              <ul style="max-width:400px;margin:0 auto;">
                 {% for question in latest_question_list %}
-                <li><a href="{% url 'polls:detail' question.id %}"><h2>{{ question.question_text }}</h2></a></li>
+                <h2><li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li></h2>
                 </br>
                   {% endfor %}
               </ul>
               {% else %}
                 <p>No polls are available.</p>
               {% endif %}
+            </div>
 {% endblock %}

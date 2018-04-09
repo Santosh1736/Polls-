@@ -1,14 +1,16 @@
 {% extends 'polls/layout.html' %}
 {% block content %}
+<div style="margin-top:200px" align="center">
+    <h1>{{question.question_text}}</h1>
+    <ol style="max-width:200px;margin:0 auto;" >
+     {% for choice in question.choice_set.all %}
+     <li>
+       {{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}
 
-<h1>{{question.question_text}}</h1>
-<ul>
- {% for choice in question.choice_set.all %}
- <li>
-   {{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}
-
- </li>
- {% endfor %}
-</ul>
- <a href="{%url 'polls:detail' question.id %}">Vote Again?</a>
+     </li>
+     {% endfor %}
+   </ol>
+     <a href="{%url 'polls:detail' question.id %}">Vote Again?</a>
+</div>
 {% endblock %}
+#"margin-top:200px;"
