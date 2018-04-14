@@ -1,0 +1,21 @@
+{% extends "polls/layout.html" %}
+
+{% block content %}
+<div style="margin-top:100px;" align="center">
+  <h1>Logout</h1>
+</br>
+  <p>You have successfully logout!! </p>
+  </br>
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    </form>
+    <p>If you want to login?</p>
+
+    <a href="{% url 'polls:login' %}">Login here!</a>
+
+
+</div>
+</div>
+
+{% endblock %}

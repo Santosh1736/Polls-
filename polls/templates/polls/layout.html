@@ -3,33 +3,45 @@
 
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>POLLING SITE</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body style="background-color:LightGray  " >
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="/admin/">Administration</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/polls/">Questions</a>
-      </li>
-
-    </ul>
-
-  </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/admin/">Staff User</a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="/polls/">Question</a>
+    </li>
+    {% else %}
+    <li class="nav-item ">
+      <a class="nav-link disabled" href="/polls/">Question</a>
+    </li>
+    {% endif %}
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="/polls/Register/">Register</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item active">
+      <a class="nav-link" href="/polls/logout/">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item active">
+      <a class="nav-link" href="/polls/login/">Login</a>
+    </li>
+    {% endif %}
+  </ul>
 </nav>
 
-
-        {% block content %}
+      {% block content %}
         <div style="background:lightslategray !important" class="jumbotron jumbotron-fluid" >
               <div class="text-center">
                   <h1 class='display-2' >POLLING</h1>
