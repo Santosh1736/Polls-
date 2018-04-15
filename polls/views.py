@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-
+from polls.forms import RegisterForm
 # Create your views here.
 class IndexView(generic.ListView):
     template_name="polls/index.html"
@@ -51,7 +51,7 @@ def votes(request, question_id):
 
 def Register(request):
     if request.method =="POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             username=form.cleaned_data.get("username")
@@ -61,7 +61,7 @@ def Register(request):
             return HttpResponseRedirect(reverse('layout'))
 
     else:
-        form=UserCreationForm()
+        form=RegisterForm()
     return render(request,'polls/Register.html',{'form':form})
 '''
 def login(request):

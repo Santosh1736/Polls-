@@ -1,30 +1,29 @@
 {% extends 'polls/layout.html' %}
 {% block content %}
-</br>
-<div>
-  <h2>Sign Up</h2>
-</br>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-    <p>
-    {{field.label_tag }}
-    {{field}}
-    {% if field.help_text %}
 
-    <small style="color: grey">{{field.help_text}}</small>
+<div class="container-fluid">
+  <h2>Register</h2>
+ </br>
+   <form method="post">
+     {% csrf_token %}
+     {% for field in form %}
+     <p>
+     {{field.label_tag }}<br>
+     {{field}}
+     {% if field.help_text %}
 
-    {% endif %}
-    {% for error in field.errors %}
-      <p style="color: red">{{error}}</p>
-    {% endfor %}
-  </p>
-  {% endfor %}
+     <small style="color: green">{{field.help_text}}</small>
 
-    <button type="submit">Register</button>
+     {% endif %}
+     {% for error in field.errors %}
+       <p style="color: red">{{error}}</p>
+     {% endfor %}
+   </p>
+   {% endfor %}
 
-  </form>
+     <button type="submit">Register</button>
 
+   </form>
 </div>
 
 {% endblock %}
